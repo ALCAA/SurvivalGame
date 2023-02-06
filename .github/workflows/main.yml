@@ -20,6 +20,13 @@ jobs:
           restore-keys: |
             Library-
 
+      # Activate
+      - name: Unity - Activate
+        uses: game-ci/unity-activate@v2.0.0
+        with:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+
       # Test
       - name: Run tests
         uses: game-ci/unity-test-runner@v2
