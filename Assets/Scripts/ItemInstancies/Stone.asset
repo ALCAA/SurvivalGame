@@ -16,3 +16,7 @@ MonoBehaviour:
   description: A simple stone.
   visual: {fileID: 21300000, guid: f7111abcf951a1f4398426869d06640b, type: 3}
   prefab: {fileID: 8602273630614726750, guid: 6a71c7e9b8045654995da977d513a2f3, type: 3}
+  stackable: 1
+  maxStack: 50
+  itemType: 0
+  equipmentType: 0

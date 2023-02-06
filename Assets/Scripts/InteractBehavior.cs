@@ -17,6 +17,8 @@ public class InteractBehavior : MonoBehaviour
     private Harvestable currentHarvestable;
     private Tool currentTool;
 
+    private bool isBusy = false;
+
     [Header("Tools visual")]
     [SerializeField]
     private GameObject pickaxeVisual;
@@ -28,6 +30,12 @@ public class InteractBehavior : MonoBehaviour
     
     public void DoPickUp(Item item)
     {
+        if (isBusy)
+        {
+            return;
+        }
+
+        isBusy = true;
         if (!inventory.IsFull())
         {
             currentItem = item;
@@ -39,6 +47,11 @@ public class InteractBehavior : MonoBehaviour
 
     public void DoHarvest(Harvestable harvestable)
     {
+        if (isBusy)
+        {
+            return;
+        }
+        isBusy = true;
         currentTool = harvestable.tool;
         EnableToolGameObjectFromEnum(currentTool);
 
@@ -49,11 +62,14 @@ public class InteractBehavior : MonoBehaviour
 
     IEnumerator BreakHarvestable()
     {
+        // Fix la possibilité de break un harvestable alors qu'il est déjà break
+        currentHarvestable.gameObject.layer = LayerMask.NameToLayer("Default");
+
         if (currentHarvestable.disableKinematicOnHarvest)
         {
             Rigidbody rigidbody = currentHarvestable.gameObject.GetComponent<Rigidbody>();
             rigidbody.isKinematic = false;
-            rigidbody.AddForce(new Vector3(750, 750, 0), ForceMode.Impulse);
+            rigidbody.AddForce(transform.forward * 800, ForceMode.Impulse);
         }
 
         yield return new WaitForSeconds(currentHarvestable.destroyDelay);
@@ -80,7 +96,8 @@ public class InteractBehavior : MonoBehaviour
     public void ReEnablePlayMovement()
     {
         EnableToolGameObjectFromEnum(currentTool, false);
-        PlayerMoveBehaviour.canMove = true;     
+        PlayerMoveBehaviour.canMove = true;
+        isBusy = false;   
     }
 
     private void EnableToolGameObjectFromEnum(Tool toolType, bool enabled = true)

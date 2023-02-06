@@ -8,9 +8,6 @@ Mon premier jeu Unity "sérieux". Projet créé à partir de ce tuto : https://w
 - Commenter le code
 - Refacto les fonctions
 
-### ANIMATION ###
-- Bloquer le spamming pendant les animations
-
 ### ITEMS ###
 - Gérer le spawing des items proprement
 - Gérer une barre d'outils
@@ -40,4 +37,12 @@ Mon premier jeu Unity "sérieux". Projet créé à partir de ce tuto : https://w
 
 ### PROJECT STRUCTURE ###
 - Ajouter une CI/CD pour au minimum build sur Windows
+
+## DONE ##
+
+### ANIMATION ###
+- Bloquer le spamming pendant les animations
+
+### INVENTAIRE ###
+- donner une stack max pour les items
 
