@@ -19,6 +19,7 @@ Mon premier jeu Unity "sérieux". Projet créé à partir de ce tuto : https://w
 - Faire un interface unifié où on accède aux items, aux craft, à la construction et à l'xp
 - Faire un menu-pause
 - Faire un menu principal
+- Fix scaling du crafting panel
 
 ### ENNEMIS ###
 - Ajouter des ennemis
@@ -35,6 +36,9 @@ Mon premier jeu Unity "sérieux". Projet créé à partir de ce tuto : https://w
 - Générer une map (procédurale ?)
 - Cycle jour-nuit
 
+### ANIMATION ###
+- Ajouter un effet lorsque le joueur tape un harvestable 
+
 ### PROJECT STRUCTURE ###
 - Ajouter une CI/CD pour au minimum build sur Windows
 
@@ -45,4 +49,7 @@ Mon premier jeu Unity "sérieux". Projet créé à partir de ce tuto : https://w
 
 ### INVENTAIRE ###
 - donner une stack max pour les items
+
+### JOUEUR ###
+- Ajouter l'endurance, la soif, la faim
 
