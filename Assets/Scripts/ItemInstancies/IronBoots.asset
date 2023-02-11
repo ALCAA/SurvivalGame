@@ -16,5 +16,11 @@ MonoBehaviour:
   description: Simple iron boots
   visual: {fileID: 21300000, guid: afd2e8edfd779164c8c91cb789a8e90c, type: 3}
   prefab: {fileID: 3058160985326774459, guid: e4915c16020c4d148bfd96eaa783e8f2, type: 3}
+  stackable: 0
+  maxStack: 0
+  armorPoints: 2
+  healthEffect: 0
+  hungerEffect: 0
+  thirstEffect: 0
   itemType: 1
   equipmentType: 4

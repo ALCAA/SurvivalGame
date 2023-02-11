@@ -16,5 +16,11 @@ MonoBehaviour:
   description: An iron gloves
   visual: {fileID: 21300000, guid: 3f3f612e2e18b4742ba62c1d294abdc6, type: 3}
   prefab: {fileID: 5139153537400034931, guid: cc430e7c0d3246b4d8361c8d8552ef5c, type: 3}
+  stackable: 0
+  maxStack: 0
+  armorPoints: 2
+  healthEffect: 0
+  hungerEffect: 0
+  thirstEffect: 0
   itemType: 1
   equipmentType: 2

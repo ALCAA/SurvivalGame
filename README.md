@@ -4,43 +4,35 @@ Mon premier jeu Unity "sérieux". Projet créé à partir de ce tuto : https://w
 
 ## TODO
 
+### ANIMATION ###
+- Ajouter un effet lorsque le joueur tape un harvestable 
+
 ### CODE ###
 - Commenter le code
 - Refacto les fonctions
+
+### CONSTRUCTION ###
+- Ajouter des structures
+
+### CRAFTING ###
+- Ajouter la possibilité d'apprendre de nouvelles recettes
 
 ### ITEMS ###
 - Gérer le spawing des items proprement
 - Gérer une barre d'outils
 
-### CRAFTING ###
-- Ajouter la possibilité d'apprendre de nouvelles recettes
+### OPEN WORLD ###
+- Générer une map (procédurale ?)
+- Cycle jour-nuit
+
+### PROJECT STRUCTURE ###
+- Ajouter une CI/CD pour au minimum build sur Windows
 
 ### UI ###
 - Faire un interface unifié où on accède aux items, aux craft, à la construction et à l'xp
 - Faire un menu-pause
 - Faire un menu principal
 - Fix scaling du crafting panel
-
-### ENNEMIS ###
-- Ajouter des ennemis
-
-### CONSTRUCTIOn ###
-- Ajouter des structures
-
-### JOUEUR ###
-- Ajouter des barres d'xp 
-- Ajouter l'endurance, la soif, la faim
-- Ajouter la mort du personnage
-
-### OPEN WORLD ###
-- Générer une map (procédurale ?)
-- Cycle jour-nuit
-
-### ANIMATION ###
-- Ajouter un effet lorsque le joueur tape un harvestable 
-
-### PROJECT STRUCTURE ###
-- Ajouter une CI/CD pour au minimum build sur Windows
 
 ## DONE ##
 
@@ -50,6 +42,13 @@ Mon premier jeu Unity "sérieux". Projet créé à partir de ce tuto : https://w
 ### INVENTAIRE ###
 - donner une stack max pour les items
 
+### ITEMS ###
+- Ajouter les consommables
+
 ### JOUEUR ###
 - Ajouter l'endurance, la soif, la faim
+- Ajouter la mort du personnage
+
+### ENNEMIS ###
+- Ajouter des ennemis
 

@@ -62,29 +62,30 @@ public class InteractBehavior : MonoBehaviour
 
     IEnumerator BreakHarvestable()
     {
+        Harvestable currentlyHarveting = currentHarvestable;
         // Fix la possibilité de break un harvestable alors qu'il est déjà break
-        currentHarvestable.gameObject.layer = LayerMask.NameToLayer("Default");
+        currentlyHarveting.gameObject.layer = LayerMask.NameToLayer("Default");
 
-        if (currentHarvestable.disableKinematicOnHarvest)
+        if (currentlyHarveting.disableKinematicOnHarvest)
         {
-            Rigidbody rigidbody = currentHarvestable.gameObject.GetComponent<Rigidbody>();
+            Rigidbody rigidbody = currentlyHarveting.gameObject.GetComponent<Rigidbody>();
             rigidbody.isKinematic = false;
             rigidbody.AddForce(transform.forward * 800, ForceMode.Impulse);
         }
 
-        yield return new WaitForSeconds(currentHarvestable.destroyDelay);
+        yield return new WaitForSeconds(currentlyHarveting.destroyDelay);
 
-        for (int i = 0; i < currentHarvestable.harvestableItems.Length; i++)
+        for (int i = 0; i < currentlyHarveting.harvestableItems.Length; i++)
         {
-            Ressource ressource = currentHarvestable.harvestableItems[i];
+            Ressource ressource = currentlyHarveting.harvestableItems[i];
 
             if (Random.Range(1,101) <= ressource.dropChance)
             {
                 GameObject instanciatedRessource = Instantiate(ressource.itemData.prefab);
-                instanciatedRessource.transform.position = currentHarvestable.transform.position + spawnItemOffset;
+                instanciatedRessource.transform.position = currentlyHarveting.transform.position + spawnItemOffset;
             }
         }
-        Destroy(currentHarvestable.gameObject);
+        Destroy(currentlyHarveting.gameObject);
     }
 
     public void AddItemToInventory()

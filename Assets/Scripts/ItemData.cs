@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "Items/New item")]
 public class ItemData : ScriptableObject
 {
+    [Header("Data")]
     public string name;
     public string description;
     public Sprite visual;
@@ -12,7 +13,15 @@ public class ItemData : ScriptableObject
     public bool stackable;
     public int maxStack;
 
-    
+    [Header("Armor Stats")]
+    public float armorPoints;
+
+    [Header("Effects")]
+    public float healthEffect;
+    public float hungerEffect;
+    public float thirstEffect;
+
+    [Header("Types")]
     public ItemType itemType;
     public EquipmentType equipmentType;
 }

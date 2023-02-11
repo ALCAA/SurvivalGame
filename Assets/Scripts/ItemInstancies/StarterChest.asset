@@ -16,5 +16,11 @@ MonoBehaviour:
   description: A starter chest
   visual: {fileID: 21300000, guid: 0ecfc25e64ad1ef4b9775690fa709b5a, type: 3}
   prefab: {fileID: 7306353113302775233, guid: 77260b134b198b941abdfe4eb55f929a, type: 3}
+  stackable: 0
+  maxStack: 0
+  armorPoints: 1
+  healthEffect: 0
+  hungerEffect: 0
+  thirstEffect: 0
   itemType: 1
   equipmentType: 1

@@ -9,6 +9,9 @@ public class Equipment : MonoBehaviour
     [SerializeField]
     private ItemActionsSystem itemActionsSystem;
 
+    [SerializeField]
+    private PlayerStats playerStats;
+
     [Header("Equipment Panel References")]
 
     [SerializeField]
@@ -99,6 +102,8 @@ public class Equipment : MonoBehaviour
             }
             equipmentLibraryItem.itemPrefab.SetActive(true);
 
+            playerStats.currentArmorPoints += itemActionsSystem.itemCurrentlySelected.armorPoints;
+
             Inventory.instance.RemoveItem(itemActionsSystem.itemCurrentlySelected);
         }
         else
@@ -184,6 +189,8 @@ public class Equipment : MonoBehaviour
             equipmentLibraryItem.itemPrefab.SetActive(false);
         }
 
+        playerStats.currentArmorPoints -= currentItem.armorPoints;
+
         Inventory.instance.AddItem(currentItem);
 
         Inventory.instance.RefreshContent();
@@ -206,6 +213,8 @@ public class Equipment : MonoBehaviour
             }
             equipmentLibraryItem.itemPrefab.SetActive(false);
         }
+
+        playerStats.currentArmorPoints -= itemToDisable.armorPoints;
 
         Inventory.instance.AddItem(itemToDisable);
     }

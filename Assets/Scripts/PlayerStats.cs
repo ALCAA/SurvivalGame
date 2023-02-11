@@ -3,6 +3,16 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Other elements references")]
+    [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
+    private MoveBehaviour playerMovementScript;
+
+    [SerializeField]
+    private AimBehaviourBasic playerAimScript;
+
     [Header("Health")]
     [SerializeField]
     private float maxHealth = 100f;
@@ -34,6 +44,11 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private float thirstDecreaseRate;
 
+    public float currentArmorPoints;
+
+    [HideInInspector]
+    public bool isDead = false;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -45,6 +60,30 @@ public class PlayerStats : MonoBehaviour
         
     }
 
+    public void ConsumeItem(float health, float hunger, float thirst)
+    {
+        currentHealth += health;
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        currentHunger += hunger;
+        if (currentHunger > maxHunger)
+        {
+            currentHunger = maxHunger;
+        }
+
+        currentThrist += thirst;
+        if (currentThrist > maxThirst)
+        {
+            currentThrist = maxThirst;
+        }
+
+        UpdateHealthBarFill();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -52,7 +91,7 @@ public class PlayerStats : MonoBehaviour
         UpdateThristBarFill();
     }
 
-    void TakeDamage(float damage, bool overTime = false)
+    public void TakeDamage(float damage, bool overTime = false)
     {
         if (overTime)
         {
@@ -60,14 +99,24 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            currentHealth -= damage;
+            currentHealth -= damage * (1 - (currentArmorPoints / 100));
         }
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
-            Debug.Log("You died :(");
+            Die();
         }
         UpdateHealthBarFill();
+    }
+
+    private void Die()
+    {
+        isDead = true;
+        playerMovementScript.canMove = false;
+        playerAimScript.enabled = false;
+        hungerDecreaseRate = 0;
+        thirstDecreaseRate = 0;
+        animator.SetTrigger("Die");
     }
 
     void UpdateHealthBarFill()
