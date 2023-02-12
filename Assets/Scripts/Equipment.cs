@@ -32,15 +32,15 @@ public class Equipment : MonoBehaviour
     [SerializeField]
     private Image bootsSlotImage;
 
+    [SerializeField]
+    private Image weaponSlotImage;
+
     private ItemData equipedHeadItem;
-
     private ItemData equipedChestItem;
-
     private ItemData equipedHandsItem;
-
     private ItemData equipedLegsItem;
-
     private ItemData equipedFeetItem;
+    public ItemData equipedWeaponItem;
 
     [SerializeField]
     private Button headSlotDesequipButton;
@@ -56,6 +56,9 @@ public class Equipment : MonoBehaviour
 
     [SerializeField]
     private Button feetSlotDesequipButton;
+
+    [SerializeField]
+    private Button weaponSlotDesequipButton;
 
     public void EquipAction()
     {
@@ -93,6 +96,12 @@ public class Equipment : MonoBehaviour
                     DisabledPreviousEquipedEquipment(equipedFeetItem);
                     bootsSlotImage.sprite = itemActionsSystem.itemCurrentlySelected.visual;
                     equipedFeetItem = itemActionsSystem.itemCurrentlySelected;
+                    break;
+
+                case EquipmentType.Weapon:
+                    DisabledPreviousEquipedEquipment(equipedWeaponItem);
+                    weaponSlotImage.sprite = itemActionsSystem.itemCurrentlySelected.visual;
+                    equipedWeaponItem = itemActionsSystem.itemCurrentlySelected;
                     break;
             }
 
@@ -134,6 +143,10 @@ public class Equipment : MonoBehaviour
         feetSlotDesequipButton.onClick.RemoveAllListeners();
         feetSlotDesequipButton.onClick.AddListener(delegate { DesequipEquipment(EquipmentType.Feet); });
         feetSlotDesequipButton.gameObject.SetActive(equipedFeetItem);
+
+        weaponSlotDesequipButton.onClick.RemoveAllListeners();
+        weaponSlotDesequipButton.onClick.AddListener(delegate { DesequipEquipment(EquipmentType.Weapon); });
+        weaponSlotDesequipButton.gameObject.SetActive(equipedFeetItem);
     }
 
     public void DesequipEquipment(EquipmentType equipmentType)
@@ -175,6 +188,12 @@ public class Equipment : MonoBehaviour
                 currentItem = equipedFeetItem;
                 equipedFeetItem = null;
                 bootsSlotImage.sprite = Inventory.instance.emptySlotVisual;
+                break;
+
+            case EquipmentType.Weapon:
+                currentItem = equipedWeaponItem;
+                equipedWeaponItem = null;
+                weaponSlotImage.sprite = Inventory.instance.emptySlotVisual;
                 break;
         }
 

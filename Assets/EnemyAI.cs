@@ -19,6 +19,12 @@ public class EnemyAI : MonoBehaviour
     [Header("Stats")]
 
     [SerializeField]
+    private float maxHealth;
+
+    [SerializeField]
+    private float currentHealth;
+
+    [SerializeField]
     private float walkSpeed;
 
     [SerializeField]
@@ -54,12 +60,15 @@ public class EnemyAI : MonoBehaviour
 
     private bool hasDestination;
     private bool isAttacking;
+    private bool isDead;
 
     private void Awake() 
     {
         Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         player = playerTransform;
         playerStats = playerTransform.GetComponent<PlayerStats>();
+
+        currentHealth = maxHealth;
     }
 
     // Start is called before the first frame update
@@ -132,6 +141,27 @@ public class EnemyAI : MonoBehaviour
         }
         hasDestination = false;
 
+    }
+
+    public void TakeDamage(float damages)
+    {
+        if (isDead)
+        {
+            return;
+        }
+        currentHealth -= damages;
+
+        if (currentHealth <= 0)
+        {
+            isDead = true;
+            animator.SetTrigger("Die");
+            agent.enabled = false;
+            this.enabled = false;
+        }
+        else 
+        {
+            animator.SetTrigger("GetHit");
+        }
     }
 
     private void OnDrawGizmos() 

@@ -10,9 +10,6 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private MoveBehaviour playerMovementScript;
 
-    [SerializeField]
-    private AimBehaviourBasic playerAimScript;
-
     [Header("Health")]
     [SerializeField]
     private float maxHealth = 100f;
@@ -113,7 +110,6 @@ public class PlayerStats : MonoBehaviour
     {
         isDead = true;
         playerMovementScript.canMove = false;
-        playerAimScript.enabled = false;
         hungerDecreaseRate = 0;
         thirstDecreaseRate = 0;
         animator.SetTrigger("Die");

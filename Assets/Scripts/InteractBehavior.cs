@@ -1,9 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class InteractBehavior : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField]
     private MoveBehaviour PlayerMoveBehaviour;
 
@@ -13,11 +14,17 @@ public class InteractBehavior : MonoBehaviour
     [SerializeField]
     private Inventory inventory;
 
+    [SerializeField]
+    private Equipment equipmentSystem;
+
+    [SerializeField]
+    private EquipmentLibrary equipmentLibrary;
+
     private Item currentItem;
     private Harvestable currentHarvestable;
     private Tool currentTool;
 
-    private bool isBusy = false;
+    public bool isBusy = false;
 
     [Header("Tools visual")]
     [SerializeField]
@@ -103,6 +110,17 @@ public class InteractBehavior : MonoBehaviour
 
     private void EnableToolGameObjectFromEnum(Tool toolType, bool enabled = true)
     {
+        EquipmentLibraryItem equipmentLibraryItem = equipmentLibrary.content.Where(elem => elem.itemData == equipmentSystem.equipedWeaponItem).FirstOrDefault();
+        
+        if (equipmentLibraryItem != null)
+        {
+            for (int i = 0; i < equipmentLibraryItem.elementsToDisable.Length; i++)
+            {
+                equipmentLibraryItem.elementsToDisable[i].SetActive(enabled);
+            }
+            equipmentLibraryItem.itemPrefab.SetActive(!enabled);
+        }
+
         switch (toolType)
         {
             case Tool.Pickaxe:

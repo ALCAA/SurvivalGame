@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     private float defaultHorizontalAimingSpeed;
     private float defaultVerticalAimingSpeed;
 
+    [HideInInspector]
+    public bool atLeastOnePanelOpened;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +27,8 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UIPanels.Any((panel) => panel == panel.activeSelf))
+        atLeastOnePanelOpened = UIPanels.Any((panel) => panel == panel.activeSelf);
+        if (atLeastOnePanelOpened)
         {
             playerCameraScript.horizontalAimingSpeed = 0;
             playerCameraScript.verticalAimingSpeed = 0;

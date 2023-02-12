@@ -330,9 +330,11 @@ GameObject:
   - component: {fileID: 2855571002864106066}
   - component: {fileID: 2855571002864106077}
   - component: {fileID: 2855571002864106076}
-  m_Layer: 0
+  - component: {fileID: 609305504}
+  - component: {fileID: 609305505}
+  m_Layer: 8
   m_Name: Bear_4
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,7 +346,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2855571002864106078}
-  m_LocalRotation: {x: -0, y: -0.97865236, z: -0, w: -0.20552275}
+  m_LocalRotation: {x: -0, y: -0.9786528, z: 0, w: -0.2055208}
   m_LocalPosition: {x: 9.91, y: 0.00000047683716, z: 5.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -386,15 +388,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a07f2da56917eb49b7dfdc500087491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  playerStats: {fileID: 0}
   agent: {fileID: 2855571002864106076}
   animator: {fileID: 2855571002864106066}
+  maxHealth: 50
+  currentHealth: 0
   walkSpeed: 2
   chaseSpeed: 4
   attackDelay: 1.133
   detectionRadius: 10
-  attackRadius: 3.2
+  attackRadius: 3
   damageDealt: 15
   rotationSpeed: 2.5
   wanderingWaitTimeMin: 2
@@ -423,6 +425,32 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &609305504
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855571002864106078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4101639
+  m_Center: {x: 0.50883937, y: 0.40132487, z: -0.000000014089606}
+--- !u!65 &609305505
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855571002864106078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9102305, y: 1.3699391, z: 2.0483534}
+  m_Center: {x: -0.044884738, y: 0.698827, z: -0.036782622}
 --- !u!1 &2855571002878145202
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,15 +7,18 @@ Mon premier jeu Unity "sérieux". Projet créé à partir de ce tuto : https://w
 ### ANIMATION ###
 - Ajouter un effet lorsque le joueur tape un harvestable 
 
+### BUILD ###
+- Ajout de divers structures à builder
+
 ### CODE ###
 - Commenter le code
 - Refacto les fonctions
 
-### CONSTRUCTION ###
-- Ajouter des structures
-
 ### CRAFTING ###
 - Ajouter la possibilité d'apprendre de nouvelles recettes
+
+### ENNEMIS ###
+- Dépecer les animaux
 
 ### ITEMS ###
 - Gérer le spawing des items proprement
@@ -51,4 +54,9 @@ Mon premier jeu Unity "sérieux". Projet créé à partir de ce tuto : https://w
 
 ### ENNEMIS ###
 - Ajouter des ennemis
+- Mort des ennemis
+- Système de combat basic
+
+### CONSTRUCTION ###
+- Ajouter des structures
 
